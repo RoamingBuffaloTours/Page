@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival AR Experience</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        model-viewer {
+            width: 100%;
+            height: 500px;
+        }
+        .unsupported-message {
+            display: none;
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Festival AR Experience</h1>
+    <p>Scan the QR code or tap below to view in AR</p>
+    
+    <model-viewer 
+        src="https://res.cloudinary.com/drvlgesz9/image/upload/v1738938064/Exquisite_Vihelmo-Borwo_ak89vj.glb"
+        ar 
+        ar-scale="fixed"
+        ar-modes="scene-viewer quick-look webxr" 
+        camera-controls 
+        auto-rotate>
+    </model-viewer>
+
+    <p class="unsupported-message">Your device may not support AR. Try using a mobile device.</p>
+
+    <script>
+        const modelViewer = document.querySelector("model-viewer");
+        if (!modelViewer.canActivateAR) {
+            document.querySelector(".unsupported-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
